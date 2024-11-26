@@ -11,7 +11,7 @@ export default function Home() {
   const [todo, setTodo] = useState<todo[]>([]);
   const [title, setTitle] = useState<string>("");
   const [empty, setEmpty] = useState<boolean>(false);
-  const [isEditable, setIsEditable] = useState<boolean>(false);
+  //const [isEditable, setIsEditable] = useState<boolean>(false);
   //const [status, setStatus] = useState<string>("Pending");
   const [completed, setCompleted] = useState<boolean>(false);
 
@@ -37,11 +37,6 @@ export default function Home() {
     } else {
       setEmpty(true);
     }
-  };
-
-  const updateTodo = (idd) => {
-    const currentItemIndex = todo.findIndex((t) => t.id == idd);
-    todo[currentItemIndex].setIsEditable(true);
   };
 
   const handleStatus = (idd: string) => {
@@ -115,15 +110,7 @@ export default function Home() {
                 className="flex justify-between items-center px-6 shadow-sm py-5"
               >
                 <td className="w-1/2 overflow-x-scroll flex items-center gap-3">
-                  {todo.title}{" "}
-                  <button
-                    onClick={() => {
-                      updateTodo(todo.id);
-                    }}
-                  >
-                    {" "}
-                    <FaPencilAlt size={15} />
-                  </button>
+                  {todo.title} <FaPencilAlt size={15} />
                 </td>
                 <td>
                   <button
