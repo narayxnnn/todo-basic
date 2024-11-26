@@ -22,7 +22,7 @@ export default function Home() {
     setTitle("");
   };
 
-  const handleStatus = (idd) => {
+  const handleStatus = (idd: string) => {
     const currentItemIndex = todo.findIndex((t) => t.id == idd);
     const updatedTodo = [...todo];
     updatedTodo[currentItemIndex] = {
@@ -32,7 +32,7 @@ export default function Home() {
     setTodo(updatedTodo);
   };
 
-  const closeTodo = (idd) => {
+  const closeTodo = (idd: string) => {
     const currentItemIndex = todo.findIndex((t) => t.id == idd);
     const afterDeletedTodo = [
       ...todo.slice(0, currentItemIndex),
@@ -83,7 +83,7 @@ export default function Home() {
                     onClick={() => {
                       handleStatus(todo.id);
                     }}
-                    className="flex items-center justify-between bg-teal-600 hover:bg-teal-700 hover:scale-105 transition duration-300 font-semibold text-white px-2 py-1 rounded-md"
+                    className="bg-teal-600 hover:bg-teal-700 hover:scale-105 transition duration-300 font-semibold text-white px-2 py-1 rounded-md"
                   >
                     {todo.status}
                   </button>
