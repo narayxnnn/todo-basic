@@ -75,7 +75,7 @@ export default function Home() {
             <tbody key={index}>
               <tr
                 key={index}
-                className="flex justify-between px-6 shadow-sm py-5"
+                className="flex justify-between items-center px-6 shadow-sm py-5"
               >
                 <td className="w-1/2 overflow-x-scroll">{todo.title}</td>
                 <td>
@@ -83,7 +83,7 @@ export default function Home() {
                     onClick={() => {
                       handleStatus(todo.id);
                     }}
-                    className="bg-teal-600 hover:bg-teal-700 hover:scale-105 transition duration-300 font-semibold text-white px-2 py-1 rounded-md"
+                    className="bg-teal-600 -ml-10 hover:bg-teal-700 hover:scale-105 transition duration-300 font-semibold text-white px-2 py-1 rounded-md"
                   >
                     {todo.status}
                   </button>
@@ -93,7 +93,7 @@ export default function Home() {
                     onClick={() => {
                       closeTodo(todo.id);
                     }}
-                    className="text-red-500 hover:text-red-600 hover:scale-105 transition duration-300 shadow-lg"
+                    className="text-red-500 -ml-6 hover:text-red-600 hover:scale-105 transition duration-300 shadow-lg"
                   >
                     <FaTrashAlt />
                   </button>
