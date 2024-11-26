@@ -46,7 +46,7 @@ export default function Home() {
         TODO List
       </p>
 
-      <div className="flex rounded-lg -mt-16 sm:mx-8 shadow-md bg-stone-50 py-8 flex-col items-center mx-4 my-4 mb-4 mt-4 justify-center gap-2">
+      <div className="flex rounded-lg -mt-16 sm:mx-8 shadow-md bg-stone-50 py-8 flex-col items-center mx-4 my-4 mb-4 justify-center gap-2">
         <input
           type="text"
           placeholder="What would you like to do?"
