@@ -126,7 +126,7 @@ export default function Home() {
                     className={`-ml-10  ${
                       todo.status != "Completed"
                         ? "bg-yellow-400 hover:scale-105 hover:bg-yellow-500"
-                        : "text-teal-600"
+                        : "text-teal-800"
                     } transition duration-300 font-semibold text-white px-3 py-1 rounded-md`}
                   >
                     {todo.status}
