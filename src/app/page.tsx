@@ -11,9 +11,10 @@ export default function Home() {
   const [todo, setTodo] = useState<todo[]>([]);
   const [title, setTitle] = useState<string>("");
   const [empty, setEmpty] = useState<boolean>(false);
-  //const [isEditable, setIsEditable] = useState<boolean>(false);
+  const [isEditable, setIsEditable] = useState<boolean>(false);
   //const [status, setStatus] = useState<string>("Pending");
   const [completed, setCompleted] = useState<boolean>(false);
+  const [newTitle, setNewTitle] = useState<string>("");
 
   useEffect(() => {
     const todosString = localStorage.getItem("todos");
@@ -59,6 +60,11 @@ export default function Home() {
     setTodo(afterDeletedTodo);
     localStorage.setItem("todos", JSON.stringify(afterDeletedTodo));
   };
+
+  const handleEdit = () => {
+    setIsEditable(true);
+  };
+
   return (
     <div className="mx-8 my-8 mt-8 mb-8 bg-purple-50 pb-6 rounded-lg">
       {completed && (
@@ -85,7 +91,7 @@ export default function Home() {
             if (title) setEmpty(false);
           }}
         />
-        <p className="text-red-400">{empty ? "Enter Something!" : ""}</p>
+        <p className="text-red-400">{empty ? "Please enter!" : ""}</p>
         <button
           className="border rounded-md hover:bg-red-500 hover:scale-105 transition duration-300 bg-red-400 text-white px-6 py-2 font-semibold shadow-lg shadow-red-200"
           onClick={addTodo}
@@ -93,6 +99,20 @@ export default function Home() {
           Add todo
         </button>
       </div>
+      {isEditable && (
+        <dialog
+          className="fixed bg-yellow-400 right-2 px-2 py-2 font-semibold text-white rounded-lg"
+          open
+        >
+          <input type="text" className="text-black rounded-md" value={title} />
+          <button
+            className="px-4 hover:scale-105"
+            onClick={() => handleUpdate()}
+          >
+            save
+          </button>
+        </dialog>
+      )}
 
       <div className="mx-4 my-4 shadow-md sm:mx-8 bg-stone-50 py-6 rounded-lg">
         <table className="flex flex-col">
@@ -110,7 +130,13 @@ export default function Home() {
                 className="flex justify-between items-center px-6 shadow-sm py-5"
               >
                 <td className="w-1/2 overflow-x-scroll flex items-center gap-3">
-                  {todo.title} <FaPencilAlt size={15} />
+                  {todo.title}{" "}
+                  <FaPencilAlt
+                    size={15}
+                    onClick={() => {
+                      handleEdit(todo.id);
+                    }}
+                  />
                 </td>
                 <td>
                   <button
@@ -125,9 +151,9 @@ export default function Home() {
                     disabled={todo.status == "Completed" ? true : false}
                     className={`-ml-10  ${
                       todo.status != "Completed"
-                        ? "bg-yellow-400 hover:scale-105 hover:bg-yellow-500"
-                        : "text-teal-800"
-                    } transition duration-300 font-semibold text-white px-3 py-1 rounded-md`}
+                        ? "bg-yellow-400 hover:scale-105 hover:bg-yellow-500  text-white"
+                        : "text-teal-600"
+                    } transition duration-300 font-semibold px-3 py-1 rounded-md`}
                   >
                     {todo.status}
                   </button>
